@@ -111,6 +111,14 @@ def startup_event():
         Access to the model instance and log file will be needed in /predict endpoint, make sure you
         store them as global variables
     """
+    global news_category_classifier
+    global log
+
+    # initialize the news_category_classifier
+    news_category_classifier = NewsCategoryClassifier(GLOBAL_CONFIG)
+    # open a log file
+    log = open(TOPDIR + '/' + news_category_classifier.config['service']['log_destination'], mode="a")
+    
     logger.info("Setup completed")
 
 
