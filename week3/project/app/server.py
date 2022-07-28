@@ -3,10 +3,14 @@ from pydantic import BaseModel
 from loguru import logger
 import joblib
 import datetime
+import pathlib
+import json
 
 from sentence_transformers import SentenceTransformer
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.pipeline import Pipeline
+
+TOPDIR = str(pathlib.Path(__file__).absolute().resolve().parent.parent)
 
 GLOBAL_CONFIG = {
     "model": {
