@@ -27,6 +27,7 @@ GLOBAL_CONFIG = {
     }
 }
 
+
 class PredictRequest(BaseModel):
     source: str
     url: str
