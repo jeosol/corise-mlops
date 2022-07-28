@@ -144,6 +144,9 @@ def shutdown_event():
         1. Make sure to flush the log file and close any file pointers to avoid corruption
         2. Any other cleanups
     """
+    # close the log file                                           
+    log.close()
+                                           
     logger.info("Shutting down application")
 
 
