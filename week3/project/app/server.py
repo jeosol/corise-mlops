@@ -177,8 +177,46 @@ def predict(request: PredictRequest):
         }
         3. Construct an instance of `PredictResponse` and return
     """
-    return {}
+    # capture the start of request, and save it
+    start = datetime.datetime.now()
 
+    # extract the model_input
+    model_input = request.description
+
+    # check for valid model_input data: must be string and not empty
+    if model_input: #and type(model_input) is str:
+       # call the classifer to get the scores
+       scores     = news_category_classifier.predict_proba([model_input])
+       # call the classifier to get the label
+       prediction = news_category_classifier.predict_label([model_input])
+    else: # input is invalid, not a string
+       scores = {}
+       prediction = 'NA'
+                                           
+    # end capture time after all execution
+    end = datetime.datetime.now()
+
+    # compute the latency as elapsed time in microsends
+    latency = (end - start).total_seconds () * 1000 
+
+    # create the response object                                           
+    response = PredictResponse(scores=scores, label=prediction)
+                                           
+    # create data to be logged                                           
+    data = {
+        'timestamp'  : start.strftime("<%Y:%m:%d %H:%M:%S>"),
+        'request'    : dict(request),
+        'prediction' : response.dict(),
+        'latency'    : latency
+    }
+    # for debugging
+    #print(json.dumps(data))
+
+    # log the data
+    log.write(json.dumps(data))
+    log.write('\n')
+
+    return response
 
 @app.get("/")
 def read_root():
