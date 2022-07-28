@@ -64,8 +64,22 @@ class NewsCategoryClassifier:
         1. Load the sentence transformer model and initialize the `featurizer` of type `TransformerFeaturizer` (Hint: revisit Week 1 Step 4)
         2. Load the serialized model as defined in GLOBAL_CONFIG['model'] into memory and initialize `model`
         """
-        featurizer = None
-        model = None
+
+        # initialize the transformer model
+        sentence_transformer_model = SentenceTransformer('sentence-transformers/{model}'.format(model=self.config['model']['featurizer']['sentence_transformer_model']))
+        # initialize the dimension of the embedding
+        dim = self.config['model']['featurizer']['sentence_transformer_embedding_dim']
+        
+        # initializer the featurizer
+        featurizer = TransformerFeaturizer(dim= dim,
+                                           sentence_transformer_model=sentence_transformer_model)
+        # serialized model path
+        serialized_model_path = TOPDIR + '/' +  self.config['model']['classifier']['serialized_model_path']
+        
+        # initialize the model
+        model = joblib.load(serialized_model_path)
+        
+        # create pipeline
         self.pipeline = Pipeline([
             ('transformer_featurizer', featurizer),
             ('classifier', model)
