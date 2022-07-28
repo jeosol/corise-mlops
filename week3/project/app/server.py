@@ -99,7 +99,16 @@ class NewsCategoryClassifier:
             ...
         }
         """
-        return {}
+        # extract description from input and create an array of out it
+
+        # create the predictions for all classes                                           
+        prediction = self.pipeline.predict_proba(model_input)[0]
+
+        # create a dictionary in the results (order of classes is in self.pipeline.classes_)
+        output = { label : class_proba for label, class_proba in zip(self.pipeline.classes_, prediction) }
+
+        # return the output
+        return output
 
     def predict_label(self, model_input: dict) -> str:
         """
@@ -110,7 +119,8 @@ class NewsCategoryClassifier:
 
         Output format: predicted label for the model input
         """
-        return ""
+        # predict the label and return it
+        return self.pipeline.predict(model_input)[0]
 
 
 app = FastAPI()
