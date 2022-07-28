@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from loguru import logger
 import joblib
-import time
+import datetime
 
 from sentence_transformers import SentenceTransformer
 from sklearn.base import BaseEstimator, TransformerMixin
