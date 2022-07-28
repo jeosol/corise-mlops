@@ -141,7 +141,8 @@ def startup_event():
 
     # initialize the news_category_classifier
     news_category_classifier = NewsCategoryClassifier(GLOBAL_CONFIG)
-    # open a log file
+
+    # create a handle to a log file
     log = open(TOPDIR + '/' + news_category_classifier.config['service']['log_destination'], mode="a")
     
     logger.info("Setup completed")
@@ -178,7 +179,7 @@ def predict(request: PredictRequest):
         }
         3. Construct an instance of `PredictResponse` and return
     """
-    # capture the start of request, and save it
+    # start time: capture the start of request, and save it
     start = datetime.datetime.now()
 
     # extract the model_input
@@ -194,7 +195,7 @@ def predict(request: PredictRequest):
        scores = {}
        prediction = 'NA'
                                            
-    # end capture time after all execution
+    # end time: capture time after all execution
     end = datetime.datetime.now()
 
     # compute the latency as elapsed time in microsends
