@@ -1,3 +1,8 @@
+## Docker image
+
+The Docker image for the project is not added to the repo because of the size of the image. The Docker image can be
+found in my DockerHub account here: https://hub.docker.com/repository/docker/tdba/news-classifier
+
 ## Introduction
 
 In the project this week, we will focus on model deployment for the news classification model that we trained in week 1, and evaluated in week 2.
