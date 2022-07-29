@@ -22,11 +22,11 @@ GLOBAL_CONFIG = {
             "sentence_transformer_embedding_dim": 768
         },
         "classifier": {
-            "serialized_model_path": "./data/news_classifier.joblib"
+            "serialized_model_path": "../data/news_classifier.joblib"
         }
     },
     "service": {
-        "log_destination": "./data/logs.out"
+        "log_destination": "../data/logs.out"
     }
 }
 
@@ -220,6 +220,7 @@ def predict(request: PredictRequest):
     # log the data
     log.write(json.dumps(data))
     log.write('\n')
+    log.flush()
 
     return response
 
