@@ -6,7 +6,7 @@ build:
 
 # start a named container
 run:
-	docker run --name $(CONTAINER_NAME) -p 80:80 news-classifier 
+	docker run --name $(CONTAINER_NAME) --rm -p 80:80 news-classifier 
 
 # start an unnamed container
 run-no-name:
