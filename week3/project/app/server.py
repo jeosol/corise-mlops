@@ -11,9 +11,8 @@ from sentence_transformers import SentenceTransformer
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.pipeline import Pipeline
 
-TOPDIR = str(os.path.abspath(os.getcwd()))
-
-# print(TOPDIR)
+# set the top directory of the p
+CURDIR = str(os.path.abspath(os.getcwd()))
 
 GLOBAL_CONFIG = {
     "model": {
@@ -78,7 +77,7 @@ class NewsCategoryClassifier:
         featurizer = TransformerFeaturizer(dim= dim,
                                            sentence_transformer_model=sentence_transformer_model)
         # serialized model path
-        serialized_model_path = TOPDIR + '/' +  self.config['model']['classifier']['serialized_model_path']
+        serialized_model_path = CURDIR + '/' +  self.config['model']['classifier']['serialized_model_path']
         
         # initialize the model
         model = joblib.load(serialized_model_path)
@@ -146,7 +145,7 @@ def startup_event():
     news_category_classifier = NewsCategoryClassifier(GLOBAL_CONFIG)
 
     # create a handle to a log file
-    log = open(TOPDIR + '/' + news_category_classifier.config['service']['log_destination'], mode="a")
+    log = open(CURDIR + '/' + news_category_classifier.config['service']['log_destination'], mode="a")
     
     logger.info("Setup completed")
 
