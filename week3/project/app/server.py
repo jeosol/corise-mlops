@@ -212,7 +212,7 @@ def predict(request: PredictRequest):
         'latency'    : latency
     }
     # for debugging
-    #print(json.dumps(data))
+    # print(json.dumps(data))
 
     # log the data
     log.write(json.dumps(data))
