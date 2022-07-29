@@ -9,7 +9,7 @@
 The Docker image for the project is not added to the repo because of the size of the image. The Docker image can be
 found in my DockerHub account here: https://hub.docker.com/repository/docker/tdba/news-classifier
 
-3.  The image was successfully tested. The containerized web app was run, and it process the different requests and writes to the output. We checked the data/logs.out file in the container and it contains the logs of the requests.
+3.  The image was successfully tested. The containerized web app was run, and it process the different requests and Ssends the log to the data/logs.out file. We entered the container and check that the requests and responses are logged correctly. y
 
 Also, see the Makefile for building the Docker image and running the container.
 
