@@ -1,7 +1,16 @@
-## Project Deliverable: Docker image
+## Project Deliverables:
+
+1. **Fast Application**
+
+   See the server.py file and sample output in the data/logs.out file
+
+2. **Docker image**
 
 The Docker image for the project is not added to the repo because of the size of the image. The Docker image can be
 found in my DockerHub account here: https://hub.docker.com/repository/docker/tdba/news-classifier
+
+3.  The image was successfully test when the container is run and it does write the output to the data/logs.out file
+in the container. 
 
 Also, see the Makefile for building the Docker image and running the container.
 
