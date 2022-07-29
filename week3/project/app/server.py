@@ -11,7 +11,7 @@ from sentence_transformers import SentenceTransformer
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.pipeline import Pipeline
 
-# set the top directory of the p
+# set the current working directory based on this file
 CURDIR = str(os.path.abspath(os.getcwd()))
 
 GLOBAL_CONFIG = {
@@ -219,6 +219,8 @@ def predict(request: PredictRequest):
     # log the data
     log.write(json.dumps(data))
     log.write('\n')
+    # we flush the file. It's not necessary per se because python flushes
+    # the stream when the file is closed.
     log.flush()
 
     return response
