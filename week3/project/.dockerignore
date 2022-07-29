@@ -1,0 +1,4 @@
+data/logs.out
+app/mlopsproject
+app/__pycache__
+.git
