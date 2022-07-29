@@ -1,4 +1,4 @@
-## Docker image
+## Project Deliverable: Docker image
 
 The Docker image for the project is not added to the repo because of the size of the image. The Docker image can be
 found in my DockerHub account here: https://hub.docker.com/repository/docker/tdba/news-classifier
