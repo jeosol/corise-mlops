@@ -5,12 +5,15 @@ import joblib
 import datetime
 import pathlib
 import json
+import os
 
 from sentence_transformers import SentenceTransformer
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.pipeline import Pipeline
 
-TOPDIR = str(pathlib.Path(__file__).absolute().resolve().parent.parent)
+TOPDIR = str(os.path.abspath(os.getcwd()))
+
+# print(TOPDIR)
 
 GLOBAL_CONFIG = {
     "model": {
